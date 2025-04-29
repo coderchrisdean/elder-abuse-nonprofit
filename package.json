@@ -1,0 +1,24 @@
+{
+  "name": "elder-abuse-nonprofit",
+  "version": "1.0.0",
+  "description": "A MERN stack website for a non-profit helping victims of elder abuse.",
+  "scripts": {
+    "start": "concurrently \"cd backend && node server.js\" \"cd frontend && npm start\"",
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderchrisdean/elder-abuse-nonprofit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coderchrisdean/elder-abuse-nonprofit/issues"
+  },
+  "homepage": "https://github.com/coderchrisdean/elder-abuse-nonprofit#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

@@ -48,16 +48,25 @@ function Donate() {
         }
       );
 
+      // Debug response
+      console.log('Backend response:', response.data);
+
+      // Ensure sessionId is provided
+      if (!response.data.sessionId) {
+        throw new Error('No session ID returned from backend');
+      }
+
       // Redirect to Stripe Checkout
       const stripe = await stripePromise;
       const { error } = await stripe.redirectToCheckout({
-        sessionId: response.data.url.split('/').pop(),
+        sessionId: response.data.sessionId,
       });
 
       if (error) {
         throw new Error(error.message);
       }
     } catch (err) {
+      console.error('Stripe error:', err);
       setError(err.message || 'An error occurred. Please try again.');
     } finally {
       setLoading(false);

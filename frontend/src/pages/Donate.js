@@ -1,7 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
+
+// Initialize Stripe with Publishable Key
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 function Donate() {
+  const [amount, setAmount] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      // Convert amount to cents
+      const amountInCents = Math.round(parseFloat(amount) * 100);
+      if (isNaN(amountInCents) || amountInCents < 100) {
+        throw new Error('Please enter a valid amount (minimum $1.00).');
+      }
+
+      // Request checkout session from backend
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/payment`,
+        {
+          amount: amountInCents,
+          email,
+        }
+      );
+
+      // Redirect to Stripe Checkout
+      const stripe = await stripePromise;
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: response.data.url.split('/').pop(),
+      });
+
+      if (error) {
+        throw new Error(error.message);
+      }
+    } catch (err) {
+      setError(err.message || 'An error occurred. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       {/* Navbar */}
@@ -36,7 +84,7 @@ function Donate() {
                 <NavLink className="nav-link" to="/#facts">Facts</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/donate" end>Donate</NavLink>
+                <NavLink className="nav-link active" to="/donate" end>Donate</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/#contact">Contact</NavLink>
@@ -67,7 +115,7 @@ function Donate() {
                 </p>
                 <h3>How It Works</h3>
                 <p>
-                  Your donation is processed securely through our trusted payment platform (coming soon). You’ll receive a confirmation email and a tax-deductible receipt. The Victim Fund is managed transparently, with regular updates on how funds are helping victims. Join us in making a tangible impact today.
+                  Your donation is processed securely through Stripe. You’ll receive a confirmation email and a tax-deductible receipt. The Victim Fund is managed transparently, with regular updates on how funds are helping victims.
                 </p>
               </div>
             </div>
@@ -77,7 +125,8 @@ function Donate() {
                 <p className="card-text">
                   Help us protect elders like Dock Dean from financial abuse. Your contribution makes a difference.
                 </p>
-                <form>
+                {error && <div className="alert alert-danger">{error}</div>}
+                <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label htmlFor="amount" className="form-label">Donation Amount</label>
                     <div className="input-group">
@@ -88,6 +137,10 @@ function Donate() {
                         id="amount"
                         placeholder="Enter amount"
                         min="1"
+                        step="0.01"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        required
                       />
                     </div>
                   </div>
@@ -98,6 +151,9 @@ function Donate() {
                       className="form-control"
                       id="name"
                       placeholder="Enter your name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
                     />
                   </div>
                   <div className="mb-3">
@@ -107,15 +163,22 @@ function Donate() {
                       className="form-control"
                       id="email"
                       placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary btn-lg">
-                    Donate
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-lg"
+                    disabled={loading}
+                  >
+                    {loading ? 'Processing...' : 'Donate'}
                   </button>
                 </form>
                 <p className="mt-3">
                   <small>
-                    Donations are processed securely. 75% supports legal representation for victims; 25% funds DEAN’s education and advocacy programs.
+                    Donations are processed securely via Stripe. 75% supports legal representation for victims; 25% funds DEAN’s education and advocacy programs.
                   </small>
                 </p>
               </div>

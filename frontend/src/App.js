@@ -6,7 +6,7 @@ function App() {
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
-          <a className="navbar-brand" href="#home">
+          <a className="navbar-brand" href="/">
             DEAN: Defending Elders Against Neglect
           </a>
           <button
@@ -23,19 +23,22 @@ function App() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link" href="#home">Home</a>
+                <a className="nav-link" href="/">Home</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#about">About Us</a>
+                <a className="nav-link" href="/#about">About Us</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#resources">Resources</a>
+                <a className="nav-link" href="/#resources">Resources</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#facts">Facts</a>
+                <a className="nav-link" href="/#facts">Facts</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#contact">Contact</a>
+                <a className="nav-link" href="/donate">Donate</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/#contact">Contact</a>
               </li>
             </ul>
           </div>
@@ -50,9 +53,14 @@ function App() {
             DEAN is dedicated to defending elders against financial abuse and neglect.
             Join us in safeguarding the wealth and dignity of our loved ones.
           </p>
-          <a href="#about" className="btn btn-primary btn-lg mt-3">
-            Learn More
-          </a>
+          <div className="mt-3">
+            <a href="#about" className="btn btn-primary btn-lg mx-2">
+              Learn More
+            </a>
+            <a href="/donate" className="btn btn-success btn-lg mx-2">
+              Donate Now
+            </a>
+          </div>
         </div>
       </section>
 

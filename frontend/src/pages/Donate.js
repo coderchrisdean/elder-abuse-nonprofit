@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Donate() {
   return (
@@ -6,9 +7,9 @@ function Donate() {
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
-          <a className="navbar-brand" href="/">
+          <NavLink className="navbar-brand" to="/">
             DEAN: Defending Elders Against Neglect
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,22 +24,22 @@ function Donate() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link" href="/">Home</a>
+                <NavLink className="nav-link" to="/" end>Home</NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/#about">About Us</a>
+                <NavLink className="nav-link" to="/#about">About Us</NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/#resources">Resources</a>
+                <NavLink className="nav-link" to="/#resources">Resources</NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/#facts">Facts</a>
+                <NavLink className="nav-link" to="/#facts">Facts</NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="/donate">Donate</a>
+                <NavLink className="nav-link" to="/donate" end>Donate</NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/#contact">Contact</a>
+                <NavLink className="nav-link" to="/#contact">Contact</NavLink>
               </li>
             </ul>
           </div>

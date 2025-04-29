@@ -1,17 +1,31 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 
-// Initialize Stripe with Publishable Key
+// Initialize Stripe with Publishable Key from .env
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 function Donate() {
+  const location = useLocation();
   const [amount, setAmount] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  // Handle success/cancel feedback from Stripe redirect
+  useEffect(() => {
+    if (location.search.includes('success=true')) {
+      setSuccessMessage('Thank you for your donation!');
+      setAmount('');
+      setName('');
+      setEmail('');
+    } else if (location.search.includes('cancel=true')) {
+      setError('Donation was cancelled. Please try again.');
+    }
+  }, [location]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -125,6 +139,7 @@ function Donate() {
                 <p className="card-text">
                   Help us protect elders like Dock Dean from financial abuse. Your contribution makes a difference.
                 </p>
+                {successMessage && <div className="alert alert-success">{successMessage}</div>}
                 {error && <div className="alert alert-danger">{error}</div>}
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">

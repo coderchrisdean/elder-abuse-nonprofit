@@ -46,48 +46,48 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="bg-light py-5 text-center">
+      <section className="section-bg-light py-5 text-center">
         <div className="container">
-          <h1 className="display-4">Protecting Our Elders</h1>
-          <p className="lead">
-            DEAN is dedicated to defending elders against financial abuse and neglect.
-            Join us in safeguarding the wealth and dignity of our loved ones.
-          </p>
-          <div className="mt-3">
-            <a href="#about" className="btn btn-primary btn-lg mx-2">
-              Learn More
-            </a>
-            <a href="/donate" className="btn btn-success btn-lg mx-2">
-              Donate Now
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* About Us Section */}
-      <section id="about" className="py-5">
-        <div className="container">
-          <h2 className="text-center mb-4">About Us</h2>
-          <div className="row">
-            <div className="col-md-8 mx-auto">
-              <p>
-                Founded by Christopher Dean and Keithra Dean-Snowden, DEAN: Defending Elders Against Neglect was inspired by the heartbreaking story of Dock Dean, Christopher’s father and Keithra’s grandfather. Dock, who has Alzheimer’s Disease, worked tirelessly his entire life, building wealth through real estate and property investments. Tragically, someone he trusted took advantage of his declining cognitive state, stealing hundreds of thousands of dollars in a devastating act of financial elder abuse. This could have been prevented.
-              </p>
-              <p>
-                We are in the midst of the largest wealth transfer in history, with trillions of dollars passing from older generations to their heirs. Yet, most people remain unprotected from financial exploitation. Our mission is to educate families, advocate for stronger protections, and help safeguard assets so elderly loved ones are not targeted. DEAN is committed to ensuring no family endures the pain we experienced.
-              </p>
+          <div className="custom-card p-4">
+            <h1 className="display-4">Protecting Our Elders</h1>
+            <p className="lead">
+              DEAN is dedicated to defending elders against financial abuse and neglect.
+              Join us in safeguarding the wealth and dignity of our loved ones.
+            </p>
+            <div className="mt-3">
+              <a href="#about" className="btn btn-primary btn-lg mx-2">
+                Learn More
+              </a>
+              <a href="/donate" className="btn btn-success btn-lg mx-2">
+                Donate Now
+              </a>
             </div>
           </div>
         </div>
       </section>
 
+      {/* About Us Section */}
+      <section id="about" className="section-bg-white py-5">
+        <div className="container">
+          <h2 className="text-center mb-4">About Us</h2>
+          <div className="custom-card p-4">
+            <p>
+              Founded by Christopher Dean and Keithra Dean-Snowden, DEAN: Defending Elders Against Neglect was inspired by the heartbreaking story of Dock Dean, Christopher’s father and Keithra’s grandfather. Dock, who has Alzheimer’s Disease, worked tirelessly his entire life, building wealth through real estate and property investments. Tragically, someone he trusted took advantage of his declining cognitive state, stealing hundreds of thousands of dollars in a devastating act of financial elder abuse. This could have been prevented.
+            </p>
+            <p>
+              We are in the midst of the largest wealth transfer in history, with trillions of dollars passing from older generations to their heirs. Yet, most people remain unprotected from financial exploitation. Our mission is to educate families, advocate for stronger protections, and help safeguard assets so elderly loved ones are not targeted. DEAN is committed to ensuring no family endures the pain we experienced.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Resources Section */}
-      <section id="resources" className="bg-light py-5">
+      <section id="resources" className="section-bg-light py-5">
         <div className="container">
           <h2 className="text-center mb-4">Resources</h2>
           <div className="row">
             <div className="col-md-4 mb-4">
-              <div className="card h-100">
+              <div className="custom-card h-100 p-3">
                 <div className="card-body">
                   <h5 className="card-title">National Elder Abuse Hotline</h5>
                   <p className="card-text">
@@ -97,7 +97,7 @@ function App() {
               </div>
             </div>
             <div className="col-md-4 mb-4">
-              <div className="card h-100">
+              <div className="custom-card h-100 p-3">
                 <div className="card-body">
                   <h5 className="card-title">Elder Justice Initiative</h5>
                   <p className="card-text">
@@ -107,7 +107,7 @@ function App() {
               </div>
             </div>
             <div className="col-md-4 mb-4">
-              <div className="card h-100">
+              <div className="custom-card h-100 p-3">
                 <div className="card-body">
                   <h5 className="card-title">Local Support</h5>
                   <p className="card-text">
@@ -121,12 +121,12 @@ function App() {
       </section>
 
       {/* Facts Section */}
-      <section id="facts" className="py-5">
+      <section id="facts" className="section-bg-white py-5">
         <div className="container">
           <h2 className="text-center mb-4">Facts About Financial Elder Abuse in California</h2>
           <div className="row">
             <div className="col-md-6 mb-4">
-              <div className="card">
+              <div className="custom-card p-3">
                 <div className="card-body">
                   <h5 className="card-title">Prevalence</h5>
                   <p className="card-text">
@@ -136,7 +136,7 @@ function App() {
               </div>
             </div>
             <div className="col-md-6 mb-4">
-              <div className="card">
+              <div className="custom-card p-3">
                 <div className="card-body">
                   <h5 className="card-title">Economic Impact</h5>
                   <p className="card-text">
@@ -146,7 +146,7 @@ function App() {
               </div>
             </div>
             <div className="col-md-6 mb-4">
-              <div className="card">
+              <div className="custom-card p-3">
                 <div className="card-body">
                   <h5 className="card-title">Legal Protections</h5>
                   <p className="card-text">
@@ -156,7 +156,7 @@ function App() {
               </div>
             </div>
             <div className="col-md-6 mb-4">
-              <div className="card">
+              <div className="custom-card p-3">
                 <div className="card-body">
                   <h5 className="card-title">Vulnerability</h5>
                   <p className="card-text">
@@ -170,8 +170,10 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-dark text-white text-center py-3">
-        <p>© 2025 DEAN: Defending Elders Against Neglect. All Rights Reserved.</p>
+      <footer className="footer text-white text-center py-3">
+        <div className="container">
+          <p>© 2025 DEAN: Defending Elders Against Neglect. All Rights Reserved.</p>
+        </div>
       </footer>
     </div>
   );

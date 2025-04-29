@@ -5,8 +5,62 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa; /* Light gray background for depth */
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto', sans-serif;
+  color: #1a3c6d; /* Dark blue for headings */
+}
+
+/* Custom card styling */
+.custom-card {
+  border-radius: 15px; /* Slightly rounded edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border: none; /* Remove default border */
+  transition: transform 0.2s; /* Smooth hover effect */
+}
+
+.custom-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Section backgrounds */
+.section-bg-light {
+  background-color: #e6f0fa; /* Light blue for sections */
+}
+
+.section-bg-white {
+  background-color: #ffffff; /* White for contrast */
+}
+
+/* Button and link colors */
+.btn-primary {
+  background-color: #1a3c6d; /* Dark blue */
+  border-color: #1a3c6d;
+}
+
+.btn-primary:hover {
+  background-color: #2e5cb8; /* Lighter blue */
+  border-color: #2e5cb8;
+}
+
+.btn-success {
+  background-color: #28a745; /* Green for Donate button */
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #218838;
+}
+
+/* Navbar */
+.navbar-dark.bg-primary {
+  background-color: #1a3c6d !important; /* Dark blue navbar */
+}
+
+/* Footer */
+.footer {
+  background-color: #1a3c6d; /* Match navbar */
 }
